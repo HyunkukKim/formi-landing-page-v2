@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <title>포미서비스 - AI 기반 SNS 마케팅</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="AI 기반 SNS 마케팅 서비스 포미서비스. 기존 대비 50% 비용으로 200% 성과를 경험하세요.">
+  <meta name="keywords" content="AI 마케팅, SNS 마케팅, 디지털 마케팅, 포미서비스">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: 'Noto Sans KR', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background: linear-gradient(135deg, #f8fafd 0%, #e8f4fd 100%);
+      color: #222;
+      line-height: 1.6;
+    }
+    
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+    
+    header, section, footer {
+      padding: 60px 0;
+    }
+    
+    h1, h2, h3 {
+      margin: 0 0 20px 0;
+      font-weight: 700;
+      line-height: 1.2;
+    }
+    
+    .hero {
+      background: linear-gradient(135deg, #4f8cff 0%, #a0e1ff 50%, #7bb3ff 100%);
+      color: #fff;
+      text-align: center;
+      padding: 100px 0 80px 0;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="25" cy="25" r="1" fill="white" opacity="0.1"/><circle cx="75" cy="75" r="1" fill="white" opacity="0.1"/><circle cx="50" cy="10" r="0.5" fill="white" opacity="0.1"/></pattern></defs><rect width="100" height="100" fill="url(%23grain)"/></svg>');
+      pointer-events: none;
+    }
+    
+    .hero-content {
+      position: relative;
+      z-index: 1;
+    }
+    
+    .hero h1 {
+      font-size: 3.5rem;
+      margin-bottom: 20px;
+      text-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+    
+    .hero p {
+      font-size: 1.4rem;
+      margin-bottom: 40px;
+      opacity: 0.95;
+    }
+    
+    .cta-buttons {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+    
+    .btn {
+      display: inline-block;
+      padding: 16px 32px;
+      border-radius: 50px;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 1.1rem;
+      transition: all 0.3s ease;
+      border: 2px solid transparent;
+      cursor: pointer;
+    }
+    
+    .btn-primary {
+      background: #fff;
+      color: #4f8cff;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    }
+    
+    .btn-primary:hover {
+      background: #4f8cff;
+      color: #fff;
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+    }
+    
+    .btn-secondary {
+      background: transparent;
+      color: #fff;
+      border-color: #fff;
+    }
+    
+    .btn-secondary:hover {
+      background: #fff;
+      color: #4f8cff;
+      transform: translateY(-2px);
+    }
+    
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 30px;
+      margin-top: 40px;
+    }
+    
+    .feature-card {
+      background: #fff;
+      border-radius: 20px;
+      padding: 40px 30px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+      transition: all 0.3s ease;
+      border: 1px solid rgba(0,0,0,0.05);
+    }
+    
+    .feature-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 20px 40px rgba(0,0,0,0.12);
+    }
+    
+    .feature-icon {
+      width: 60px;
+      height: 60px;
+      background: linear-gradient(135deg, #4f8cff, #a0e1ff);
+      border-radius: 15px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 20px;
+      font-size: 24px;
+      color: #fff;
+    }
+    
+    .price-comparison {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 30px;
+      margin-top: 40px;
+    }
+    
+    .price-card {
+      background: #fff;
+      border-radius: 20px;
+      padding: 40px 30px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+      position: relative;
+      border: 2px solid transparent;
+    }
+    
+    .price-card.featured {
+      border-color: #4f8cff;
+      transform: scale(1.05);
+    }
+    
+    .price-card.featured::before {
+      content: "추천";
+      position: absolute;
+      top: -10px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: #4f8cff;
+      color: #fff;
+      padding: 5px 20px;
+      border-radius: 20px;
+      font-size: 0.9rem;
+      font-weight: 600;
+    }
+    
+    .process-steps {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 30px;
+      margin-top: 40px;
+    }
+    
+    .step-card {
+      background: linear-gradient(135deg, #f8fafd, #e8f4fd);
+      border-radius: 20px;
+      padding: 30px;
+      text-align: center;
+      position: relative;
+    }
+    
+    .step-number {
+      width: 50px;
+      height: 50px;
+      background: #4f8cff;
+      color: #fff;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: 1.2rem;
+      margin: 0 auto 20px;
+    }
+    
+    .testimonial {
+      background: linear-gradient(135deg, #fffbe6, #fff3cd);
+      border-radius: 20px;
+      padding: 40px;
+      margin: 40px 0;
+      text-align: center;
+      position: relative;
+    }
+    
+    .testimonial::before {
+      content: '"';
+      font-size: 4rem;
+      color: #4f8cff;
+      position: absolute;
+      top: 10px;
+      left: 30px;
+      opacity: 0.3;
+    }
+    
+    .footer {
+      background: linear-gradient(135deg, #222, #333);
+      color: #fff;
+      padding: 60px 0 40px;
+    }
+    
+    .footer-content {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 40px;
+    }
+    
+    .footer-section h3 {
+      color: #4f8cff;
+      margin-bottom: 20px;
+    }
+    
+    .footer-section a {
+      color: #ccc;
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+    
+    .footer-section a:hover {
+      color: #4f8cff;
+    }
+    
+    .footer-bottom {
+      border-top: 1px solid #444;
+      margin-top: 40px;
+      padding-top: 20px;
+      text-align: center;
+      color: #999;
+    }
+    
+    @media (max-width: 768px) {
+      .hero h1 {
+        font-size: 2.5rem;
+      }
+      
+      .hero p {
+        font-size: 1.2rem;
+      }
+      
+      .cta-buttons {
+        flex-direction: column;
+        align-items: center;
+      }
+      
+      .btn {
+        width: 100%;
+        max-width: 300px;
+        text-align: center;
+      }
+      
+      header, section, footer {
+        padding: 40px 0;
+      }
+      
+      .container {
+        padding: 0 15px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="hero">
+    <div class="container">
+      <div class="hero-content">
+        <h1>AI가 만드는<br>SNS 마케팅의 새로운 기준</h1>
+        <p>기존 대비 50% 비용으로<br>200% 성과를 경험하세요</p>
+        <div class="cta-buttons">
+          <a href="#contact" class="btn btn-primary">무료 상담 신청하기</a>
+          <a href="#cases" class="btn btn-secondary">성과 사례 보기</a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <section class="container">
+    <h2 style="text-align: center; font-size: 2.5rem; margin-bottom: 20px;">포미서비스가<br>특별한 이유</h2>
+    <div class="features-grid">
+      <div class="feature-card">
+        <div class="feature-icon">🤖</div>
+        <h3>AI 기술</h3>
+        <p>최신 AI 기술로 타겟 고객을 정확히 분석하고 최적화된 콘텐츠를 자동 생성합니다.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">💰</div>
+        <h3>합리적 가격</h3>
+        <p>착수금 50% 절감, 성과 기반 비용 지불로 부담 없이 시작하세요.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">📊</div>
+        <h3>실시간 리포트</h3>
+        <p>24시간 실시간으로 마케팅 성과를 확인하고 즉각적인 전략 수정이 가능합니다.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="container">
+    <h2 style="text-align: center; font-size: 2.5rem; margin-bottom: 20px;">AI가 해결하는<br>SNS 마케팅의 모든 것</h2>
+    <div class="features-grid">
+      <div class="feature-card">
+        <div class="feature-icon">🎯</div>
+        <h3>스마트 타겟팅</h3>
+        <p>AI가 분석한 고객 데이터로 정확한 타겟 설정</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">✍️</div>
+        <h3>자동 콘텐츠 생성</h3>
+        <p>트렌드 분석 기반 맞춤형 콘텐츠 자동 제작</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">🔮</div>
+        <h3>성과 예측 시스템</h3>
+        <p>캠페인 시작 전 예상 성과를 미리 확인</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">⚡</div>
+        <h3>리얼타임 최적화</h3>
+        <p>실시간 데이터 기반 자동 전략 조정</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="container">
+    <h2 style="text-align: center; font-size: 2.5rem; margin-bottom: 20px;">투명하고 합리적인<br>가격 정책</h2>
+    <div class="price-comparison">
+      <div class="price-card">
+        <h3>기존 업체</h3>
+        <ul style="list-style: none; padding: 0; margin: 20px 0;">
+          <li style="padding: 10px 0; border-bottom: 1px solid #eee;">착수금: 200만원~</li>
+          <li style="padding: 10px 0; border-bottom: 1px solid #eee;">월 관리비: 100만원~</li>
+          <li style="padding: 10px 0; border-bottom: 1px solid #eee;">성과 보장: 없음</li>
+          <li style="padding: 10px 0;">리포트: 월 1회</li>
+        </ul>
+      </div>
+      <div class="price-card featured">
+        <h3>포미서비스</h3>
+        <ul style="list-style: none; padding: 0; margin: 20px 0;">
+          <li style="padding: 10px 0; border-bottom: 1px solid #eee;">착수금: 100만원~</li>
+          <li style="padding: 10px 0; border-bottom: 1px solid #eee;">월 관리비: 성과 기반</li>
+          <li style="padding: 10px 0; border-bottom: 1px solid #eee;">성과 보장: 목표 미달성시 환불</li>
+          <li style="padding: 10px 0;">리포트: 실시간 대시보드</li>
+        </ul>
+      </div>
+    </div>
+    <p style="text-align: center; margin-top: 30px; font-size: 1.2rem; font-weight: 600; color: #4f8cff;">성과가 없으면 비용도 없습니다</p>
+  </section>
+
+  <section class="container">
+    <h2 style="text-align: center; font-size: 2.5rem; margin-bottom: 20px;">간단한 4단계로<br>시작하는 AI 마케팅</h2>
+    <div class="process-steps">
+      <div class="step-card">
+        <div class="step-number">1</div>
+        <h3>무료 상담</h3>
+        <p>현재 상황 분석 및 맞춤 전략 제안</p>
+      </div>
+      <div class="step-card">
+        <div class="step-number">2</div>
+        <h3>AI 분석</h3>
+        <p>타겟 고객 분석 및 최적 채널 선정</p>
+      </div>
+      <div class="step-card">
+        <div class="step-number">3</div>
+        <h3>캠페인 실행</h3>
+        <p>AI 기반 콘텐츠 제작 및 자동 운영 시작</p>
+      </div>
+      <div class="step-card">
+        <div class="step-number">4</div>
+        <h3>성과 최적화</h3>
+        <p>실시간 데이터 기반 지속적 개선</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="container" id="cases">
+    <h2 style="text-align: center; font-size: 2.5rem; margin-bottom: 20px;">포미서비스와 함께<br>성장한 브랜드들</h2>
+    <div class="testimonial">
+      <p style="font-size: 1.3rem; margin-bottom: 20px; font-style: italic;">"착수금 부담이 적어서 시작했는데 3개월 만에 매출이 2배 증가했습니다"</p>
+      <p style="color: #666; font-weight: 600;">- 패션 쇼핑몰 A사 대표</p>
+    </div>
+  </section>
+
+  <section class="container" id="contact">
+    <h2 style="text-align: center; font-size: 2.5rem; margin-bottom: 20px;">지금 시작하면<br>첫 달 50% 추가 할인</h2>
+    <p style="text-align: center; font-size: 1.2rem; margin-bottom: 40px;">AI가 만드는 차별화된 성과,<br>무료 상담으로 확인하세요</p>
+    <div style="text-align: center;">
+      <a href="#contact" class="btn btn-primary">지금 바로 상담 신청</a>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-section">
+          <h3>포미서비스</h3>
+          <p>AI 기반 SNS 마케팅 전문</p>
+          <p style="margin-top: 20px;">
+            <strong>연락처</strong><br>
+            전화: 1588-0000<br>
+            이메일: contact@formi.co.kr<br>
+            카카오톡: @포미서비스
+          </p>
+        </div>
+        <div class="footer-section">
+          <h3>서비스</h3>
+          <p><a href="#features">서비스 소개</a></p>
+          <p><a href="#pricing">가격 안내</a></p>
+          <p><a href="#cases">성공 사례</a></p>
+          <p><a href="#faq">자주 묻는 질문</a></p>
+        </div>
+        <div class="footer-section">
+          <h3>운영시간</h3>
+          <p>평일 09:00 - 18:00</p>
+          <p>주말/공휴일 휴무</p>
+        </div>
+        <div class="footer-section">
+          <h3>약관</h3>
+          <p><a href="privacy-policy.html" target="_blank">이용약관</a></p>
+          <p><a href="privacy-policy.html" target="_blank">개인정보처리방침</a></p>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2024 포미서비스. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>
